@@ -1,10 +1,14 @@
 from random import randint
+from gtts import gTTS
+from io import BytesIO
+from pydub import AudioSegment
+from pydub.playback import play
 
 
 class WordChooser:
     def __init__(self) -> None:
         with open("./english_words.csv") as f:
-            self.words = set(word.strip() for word in f.read().split(","))
+            self.words = list(word.strip() for word in f.read().split(","))
         self.random_word = self.choose_random_word()
 
     def choose_random_word(self):
@@ -19,3 +23,12 @@ class WordChooser:
             return new_word
         else:
             return self.randomize_word()
+
+    def say_word(self):
+        mp3_fp = BytesIO()
+        tts = gTTS(f"{self.random_word}")
+        tts.write_to_fp(mp3_fp)
+        mp3_fp.seek(0)
+
+        audio = AudioSegment.from_file(mp3_fp, format="mp3")
+        play(audio)
