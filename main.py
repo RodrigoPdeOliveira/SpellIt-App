@@ -31,6 +31,7 @@ class WordChooser:
         tts.write_to_fp(mp3_fp)
         mp3_fp.seek(0)
         audio = AudioSegment.from_file(mp3_fp, format="mp3")
+        self.tts_audio = audio
 
         return audio
 
