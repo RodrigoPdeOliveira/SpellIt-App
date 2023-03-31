@@ -10,6 +10,7 @@ class WordChooser:
         with open("./english_words.csv") as f:
             self.words = list(word.strip() for word in f.read().split(","))
         self.random_word = self.choose_random_word()
+        self.tts_audio = self.set_word()
 
     def choose_random_word(self):
         return self.words[randint(0, len(self.words) - 1)]
@@ -24,11 +25,14 @@ class WordChooser:
         else:
             return self.randomize_word()
 
-    def say_word(self):
+    def set_word(self):
         mp3_fp = BytesIO()
         tts = gTTS(f"{self.random_word}")
         tts.write_to_fp(mp3_fp)
         mp3_fp.seek(0)
-
         audio = AudioSegment.from_file(mp3_fp, format="mp3")
-        play(audio)
+
+        return audio
+
+    def say_word(self):
+        play(self.tts_audio)
