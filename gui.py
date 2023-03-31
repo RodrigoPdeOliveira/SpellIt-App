@@ -33,4 +33,8 @@ while True:
     if event == "Play":
         wc.say_word()
 
+    if event == "Skip":
+        wc.randomize_word()
+        wc.set_word()
+
 window.close()
