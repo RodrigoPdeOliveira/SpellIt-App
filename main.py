@@ -17,7 +17,7 @@ class WordChooser:
 
     def randomize_word(self):
         current_word = self.random_word
-        new_word = self.choose_random_word()
+        new_word = self.choose_random_word().lower()
 
         if new_word != current_word:
             self.random_word = new_word
