@@ -53,11 +53,14 @@ while True:
         window["attempts"].update(f"Nº of words tried: {n_of_tentatives}")
         window["success_rate"].update(f"% of success: {percent_of_success:.2f}%")
 
+        wc.say_word()
+
     if event == "Play":
         wc.say_word()
 
     if event == "Skip":
         wc.randomize_word()
         wc.set_word()
+        wc.say_word()
 
 window.close()
