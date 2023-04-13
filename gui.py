@@ -16,6 +16,7 @@ layout = [
     [sg.Text("Spell It!")],
     [sg.InputText(key="textInput", expand_x=True, justification="center", font="Arial 35 bold")],
     [sg.Text("Correct: 0", key="correct"), sg.Text("Nº of attempts: 0", key="attempts"), sg.Text("% of success: 0%", key="success_rate")],
+    [sg.Text("", key="right_wrong")],
     [sg.Button("Play", expand_x=True), sg.Button("Skip", expand_x=True)],
     [sg.Button("Enter", expand_x=True)],
 ]
@@ -40,11 +41,12 @@ while True:
         n_of_tentatives += 1
 
         if text == wc.random_word:
+            window["right_wrong"].update("CORRECT, GOOD JOB!")
             correct_guesses += 1
             wc.randomize_word()
             wc.set_word()
         else:
-            print("WRONG")
+            window["right_wrong"].update("WRONG, TRY AGAIN.")
 
         percent_of_success = update_success_rate()
 
