@@ -9,7 +9,7 @@ class WordChooser:
     def __init__(self) -> None:
         with open("./english_words.csv") as f:
             self.words = list(word.strip() for word in f.read().split(","))
-        self.random_word = self.choose_random_word()
+        self.random_word = self.choose_random_word().lower()
         self.tts_audio = self.set_word()
 
     def choose_random_word(self):

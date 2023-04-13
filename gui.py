@@ -27,7 +27,7 @@ while True:
         break
 
     if event == "Enter" or event == "Return:36":
-        text = values["textInput"]
+        text = values["textInput"].lower()
         window["textInput"].update("")
 
     if event == "Play":
