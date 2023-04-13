@@ -15,9 +15,8 @@ sg.theme("DarkBlue12")
 layout = [
     [sg.Text("Spell It!")],
     [sg.InputText(key="textInput", expand_x=True, justification="center", font="Arial 35 bold")],
-    [sg.Text("Correct: 0", key="correct"), sg.Text("Nº of words tried: 0", key="attempts"), sg.Text("% of success: 0%", key="success_rate")],
-    [sg.Button("Play", expand_x=True)],
-    [sg.Button("Hint", expand_x=True), sg.Button("Skip", expand_x=True)],
+    [sg.Text("Correct: 0", key="correct"), sg.Text("Nº of attempts: 0", key="attempts"), sg.Text("% of success: 0%", key="success_rate")],
+    [sg.Button("Play", expand_x=True), sg.Button("Skip", expand_x=True)],
     [sg.Button("Enter", expand_x=True)],
 ]
 
